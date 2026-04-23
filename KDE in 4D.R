@@ -5,7 +5,6 @@ fit <- ks::kde(x = train_500)
 
 library(GGally)
 
-# Convert your training data to a dataframe
 df_train <- as.data.frame(train_500)
 colnames(df_train) <- c("Var1", "Var2", "Var3", "Var4")
 
@@ -13,15 +12,6 @@ ggpairs(df_train,
         upper = list(continuous = wrap("density", alpha = 0.5)),
         lower = list(continuous = wrap("points", alpha = 0.3, size = 0.5)),
         diag = list(continuous = wrap("densityDiag")))
-
-# Create the continuous function
-f_hat <- function(x_vec) {
-  # x_vec should be a vector of length 4
-  predict(fit, x = matrix(x_vec, nrow = 1))
-}
-
-# Now you can use it like a math function
-#f_hat(c(1, 2, 1, 2))
 
 # Extract the 1D marginal KDE for the first coordinate
 # we use the marginal bandwidth from the 4D H matrix
