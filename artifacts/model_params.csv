@@ -1,0 +1,2 @@
+dimension,hidden_dimension,num_layers,learning_rate
+4,64,10,0.001
